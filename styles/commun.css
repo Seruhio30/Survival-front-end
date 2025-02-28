@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    line-height: 1.6;
+    color: #333;
+    background-color: #97e5f0;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #97e5f0;
+}
+
+.nav-container {
+    background-color: #78c4f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.page-name-container {
+    margin: 10px 0;
+   
+}
+
+#page-name {
+    color: #551a8b;
+    padding-left: 10px;
+}
+
+
+#nav-menu ul {
+    display: none;
+    flex-direction: column;
+    padding-top: 30px;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+nav a {
+   color: black;
+    text-decoration: none;
+    padding: 0.5em;
+    transition: background-color 0.3s;
+}
+
+
+
+#nav-menu.open ul {
+    display: flex;
+    
+}
+
+#hamburger {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    padding-top: 7px;
+    display: block;
+    align-self: flex-end;
+    margin-right: 10px;
+    position: absolute;
+    top: 0.1rem;
+    right: 3rem;
+   
+}
+
+#hamburger::before {
+    content: "☰";
+}
+
+#hamburger.open::before {
+    content: "❎";
+}
+
+
+.logo-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.logo-container {
+    margin-bottom: 10px;
+}
+
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+.web-info {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 5px;
+    box-sizing: border-box;
+    /*border: 1px solid #6a85f3;*/
+}
+
+.justified-text {
+    text-align: justify;
+}
+
+/*footer*/
+footer {
+    background-color: #84e4f1;
+    color: black;
+    text-align: center;
+    padding: 1em 0;
+    
+}
+
+@media (min-width: 860px ){
+
+    #page-name {
+        margin-left: 40px;
+    }
+
+    .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #nav-menu ul {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        gap: 5.5rem;
+        padding-right: 250px;
+    }
+
+
+
+    nav a:hover {
+        background-color: #283593;
+        color: #e0f7fa;
+    }
+
+    #hamburger {
+        display: none;
+    }
+
+    .logo-section-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .logo-container {
+        flex: 0 0 25%;
+        padding-left: 130px;
+    }
+
+    .web-info {
+        flex: 0 0 75%;
+    }
+
+    @media(max-width: 600px){
+        .nav-container .logo-section-container{
+            width: 100%;
+            flex-direction: column; /* Apilar las tarjetas verticalmente */
+            align-items: center; /* Centrar las tarjetas */
+            text-align: center; /* Alinear texto e imágenes */
+    
+        }
+    }
+}

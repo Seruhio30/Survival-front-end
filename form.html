@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WDD 131 - Dynamic Web Fundamentals - sergio Herrera Rivera - Final Project- Form">
+    <meta name="author" content="Sergio Herrera Rivera">
+    <title>Form</title>
+    <link rel="stylesheet" href="styles/commun.css">
+    <link rel="stylesheet" href="styles/form.css">
+    
+</head>
+<body>
+    <h1>Subscribete</h1>
+    <div class="container">
+        <form id="subscriptionForm">
+
+
+
+            <fieldset>
+                <legend>Informacion de Usuariio</legend>
+                <label>Primer Nombre*<input type="text" name="fname" required></label>
+                <label>Apellidos*<input type="text" name="lname" required></label>
+                <label>*Correo electrónico**<input type="email" name="email" placeholder="abc@dfg.com"></label>
+                
+            </fieldset>
+
+            <fieldset>
+                <label>Fecha De Suscripcion</label>
+                <input type="date" name="installation" id="instal-date" required>
+            </fieldset>
+
+            <fieldset>
+                <div class="checkbox-container">
+                    <label>Quiero informacion acerca de:</label>
+                    <label for="check1"><input type="checkbox" name="earthquake" id="check1">Terremotos</label>
+                    <label for="check2"><input type="checkbox" name="flood" id="check2">Inundaciones</label>
+                    <label for="check3"><input type="checkbox" name="hurricane" id="check3">Huracanes</label>
+                    <label for="check4"><input type="checkbox" name="landslide" id="check4">Deslizamientos</label>
+                </div>  
+            </fieldset>
+
+            <fieldset>
+                <label>Tienes alguna duda?</label></label>
+                <textarea name="Ask a Question" id="questions"></textarea>
+            </fieldset>
+
+
+            <fieldset>
+                <label>Califícanos</label>
+                <div class="stars">
+                    <input type="radio" id="fivestar" name="stars" value="5" required><label for="fivestar"></label>
+                    <input type="radio" id="fourstar" name="stars" value="4" required><label for="fourstar"></label>
+                    <input type="radio" id="threestar" name="stars" value="3" required><label for="threestar"></label>
+                    <input type="radio" id="twostar" name="stars" value="2" required><label for="twostar"></label>
+                    <input type="radio" id="onestar" name="stars" value="1" required><label for="onestar"></label>
+                </div>
+            </fieldset>
+
+            <input id="submit" type="submit" value="Subscribite">
+        </form>
+    </div>
+    
+    <footer>
+        <p class="pf">&copy; <span id="currentyear"></span> SeruhioCode30</p>
+        <p class="pf">Ultima Modificacion: <span id="lastModified"></span></p>
+    </footer>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/form.js"></script>
+</body>
+</html>

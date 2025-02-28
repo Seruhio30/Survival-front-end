@@ -1,0 +1,123 @@
+/* Reset y Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Sección: Kit de Emergencia */
+#backPack72, #plan {
+    background-color: #E0F7FA;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.h2-container h2 {
+    text-align: center;
+    color: #FA6B2A;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+#one {
+    margin-bottom: 20px;
+}
+
+.zebra-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.zebra-list #li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.zebra-list #li:nth-child(odd) {
+    background-color: #E0F7FA;
+}
+
+.zebra-list #li:nth-child(even) {
+    background-color: #FFFFFF;
+}
+
+.h2-container h3 {
+    color: #283593;
+    font-weight: bold;
+}
+
+/* Sección de Videos */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.video-container iframe {
+    width: 100%;
+    max-width: 560px;
+    /* height: auto; */
+    border-radius: 8px;
+}
+
+/* Nueva Sección: Enlaces a Instituciones de Emergencias */
+#institution-links {
+    background-color: #E6F2F8;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+#institution-links h2 {
+    color: #FA6B2A;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+#institution-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#institution-links ul li {
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDD;
+    border-radius: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#institution-links ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#institution-links ul li a {
+    color: #283593;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#institution-links ul li a:hover {
+    color: #FA6B2A;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

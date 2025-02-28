@@ -1,0 +1,266 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Sección Uno (Destacado) */
+.one {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    background-color: #E0F7FA;
+}
+
+.one-left-column, .one-right-column {
+    padding: 10px;
+}
+
+
+.destacado{
+    background-color: #FA6B2A;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.img-mochila img {
+    width: 100%;
+   
+    border-radius: 8px;
+}
+
+.one-right-destacado {
+    color: #283593;
+    font-size: 1.2rem;
+}
+
+#more-info {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #FA6B2A;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.one-right-colum-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+#more-info:hover {
+    transform: scale(1.5);
+}
+
+/* Sección Dos (Tarjetas) */
+.two {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #E6F2F8;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+    background-color: #E0F7FA;
+    color: #283593;
+}
+
+.card-back {
+    height: auto;
+    background-color: #FA6B2A;
+    color: #000000;
+    transform: rotateY(180deg);
+}
+
+#card-back-plan{
+    color: #000000;
+}
+
+/* Sección Tres (Escenarios) */
+.three {
+    display: grid;
+    grid-template-columns:  repeat(2,1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.three-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.three-div img {
+    width: 100%;
+    max-width: 271px;
+    height: 203px;
+    border-radius: 8px;
+    
+}
+
+/* #deslizamiento{
+    max-height: 203px;
+    width: auto;
+} */
+
+.three-div a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.three-div a:hover {
+    background: #0056b3;
+}
+
+/* RESPONSIVE - Una columna en pantallas pequeñas */
+@media (max-width: 768px) {
+    .three {
+        grid-template-columns: 1fr; /* Cambia a una columna */
+    }
+}
+
+@media (max-width: 600px) {
+    .one {
+        grid-template-columns: 1fr; /* En pantallas pequeñas, todo en una columna */
+        padding: 10px;
+    }
+
+    .one-left-column, .one-right-column {
+        padding: 0;
+    }
+
+    
+
+    .destacado {
+        width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+        max-width: 200px;
+    }
+
+    .one-right-destacado {
+        width: 100%;
+        padding: 15px; /* Un poco menos de padding */
+    }
+
+    #ready-h3 {
+        font-size: 1.4rem; /* Ajuste de tamaño de fuente */
+        margin-bottom: 15px;
+    }
+
+    #info1, #info2 {
+        font-size: 1rem; /* Ajuste de tamaño de fuente */
+        line-height: 1.5;
+        padding: 10px;
+    }
+
+    #more-info {
+        font-size: 1rem; /* Ajuste de tamaño de fuente para el botón */
+        padding: 12px 20px; /* Ajuste en el padding */
+    }
+
+    .one img {
+        width: 100%; /* Asegura que la imagen ocupe el ancho completo del contenedor */
+        max-width: 200px; /* Limitar el tamaño máximo */
+    }
+
+    .two {
+        display: flex; /* Añadir display: flex */
+        flex-direction: column; /* Apilar las tarjetas verticalmente */
+        align-items: center; /* Centrar las tarjetas */
+        text-align: center; /* Alinear texto e imágenes */
+    }
+
+    .card {
+        width: 100%; /* Ocupar todo el ancho disponible */
+        max-width: 250px; /* Limitar el tamaño */
+        height: auto; /* Permitir altura dinámica */
+        perspective: none; /* Eliminar efecto 3D */
+    }
+
+    .card-inner {
+        margin: auto;
+        transform: none !important; /* Eliminar rotación */
+        display: flex;
+        flex-direction: column; /* Colocar el back debajo */
+    }
+
+    .card-back p {
+        transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+        position: static; /* No posicionar absolutamente */
+        backface-visibility: visible; /* Hacer visible el back */
+        display: block; /* Mostrar ambos bloques */
+        width: 100%;
+        padding: 10px;
+    }
+
+    .three {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        z-index: 1; /* Asegurar que esté encima */
+        position: relative;
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Suscripción</title>
+    <link rel="stylesheet" href="styles/unsubscribe.css">
+</head>
+<body>
+    <h1>Cancelar Suscripción</h1>
+    <div class="container">
+        <p id="message">Estamos procesando tu solicitud...</p>
+    </div>
+    <div id="subscription-management">
+        <p id="message"></p>
+        <form id="unsubscribeForm">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" readonly>
+            <button type="submit">Cancelar Suscripción</button>
+        </form>
+    </div>
+
+    <footer>
+        <p class="pf">&copy; <span id="currentyear"></span> SeruhioCode30</p>
+        <p class="pf">Ultima Modificacion: <span id="lastModified"></span></p>
+    </footer>
+    
+    <script src="scripts/unsubscribe.js"></script>
+</body>
+</html>

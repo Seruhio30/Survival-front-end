@@ -1,0 +1,113 @@
+/* Reset y Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #E6F2F8;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    background-color: #E6F2F8;
+    padding: 20px;
+    text-align: center;
+}
+
+.nav-container {
+    background-color: #283593;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+#page-name {
+    font-size: 1.8rem;
+    color: #FA6B2A;
+}
+
+#nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #FA6B2A;
+}
+
+/* Logo e Información */
+.logo-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo-container img {
+    width: 150px;
+}
+
+/* Contenedor de Agradecimiento */
+.thank-you-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.thank-you-container h1 {
+    font-size: 2rem;
+    color: #283593;
+    margin-bottom: 20px;
+}
+
+.thank-you-container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.thank-you-container a {
+    color: #FA6B2A;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.thank-you-container a:hover {
+    color: #283593;
+}
+
+/* Footer */
+footer {
+    background-color: #283593;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
