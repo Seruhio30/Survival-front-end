@@ -7,7 +7,8 @@
 
 
 /* Sección: Kit de Emergencia */
-#backPack72, #plan {
+#backPack72,
+#plan {
     background-color: #E0F7FA;
     padding: 20px;
     border-radius: 8px;
@@ -48,6 +49,20 @@
 .h2-container h3 {
     color: #283593;
     font-weight: bold;
+}
+
+.backPack-info a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #5eddf1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.backPack-info a:hover {
+    background: #488fdb;
 }
 
 /* Sección de Videos */
