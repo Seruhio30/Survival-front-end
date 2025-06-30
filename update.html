@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Suscripción</title>
     <link rel="stylesheet" href="styles/commun.css">
     <link rel="stylesheet" href="styles/update.css">
-    
+
 </head>
+
 <body>
     <h1>Gestiona tu Suscripción</h1>
     <div class="container">
         <form id="updateSubscriptionForm">
             <fieldset>
                 <legend>Actualizar tus intereses</legend>
-                <label>Correo Electrónico: <input type="email" name="email" required placeholder="Ingresa tu correo"></label>
+                <label>Correo Electrónico: <input type="email" name="email" required
+                        placeholder="Ingresa tu correo"></label>
                 <div class="checkbox-container">
                     <label>Selecciona tus nuevos intereses:</label>
                     <label for="check1"><input type="checkbox" name="earthquake" id="check1">Terremotos</label>
@@ -31,7 +34,8 @@
         <form id="cancelSubscriptionForm">
             <fieldset>
                 <legend>Cancelar Suscripción</legend>
-                <label>Correo Electrónico: <input type="email" name="email" required placeholder="Ingresa tu correo"></label>
+                <label>Correo Electrónico: <input type="email" name="email" required
+                        placeholder="Ingresa tu correo"></label>
             </fieldset>
             <input type="submit" value="Cancelar Suscripción">
         </form>
@@ -40,6 +44,9 @@
         <p class="pf">&copy; <span id="currentyear"></span> SeruhioCode30</p>
         <p class="pf">Ultima Modificacion: <span id="lastModified"></span></p>
     </footer>
-    <script src="scripts/updateSubscription.js"></script>
+    <script src="scripts/updateSubscription-v2.js"></script>
+
+
 </body>
+
 </html>

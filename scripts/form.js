@@ -1,45 +1,38 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("subscriptionForm");
 
-    if (form) {
-        form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            console.log("El formulario fue enviado");
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-            const subscriberData = {
-                firstName: form.fname.value,
-                lastName: form.lname.value,
-                email: form.email.value,
-                topicsOfInterest: [
-                    form.check1.checked ? "Terremotos" : "",
-                    form.check2.checked ? "Inundaciones" : "",
-                    form.check3.checked ? "Huracanes" : "",
-                    form.check4.checked ? "Deslizamientos" : ""
-                ].filter(Boolean).join(", ")
-            };
-            console.log("Datos que se envían:", subscriberData);
-            try {
-                const response = await fetch("http://localhost:8080/api/subscribers/subscribe", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(subscriberData)
-                });
+        const data = {
+            nombre: form.nombre.value.trim(),
+            apellido: form.apellido.value.trim(),
+            email: form.email.value.trim(),
+            ciudad: form.ciudad.value.trim() || "No especificada",
+            terremoto: form.terremoto.checked,
+            huracan: form.huracan.checked,
+            inundacion: form.inundacion.checked,
+            deslizamiento: form.deslizamiento.checked
+        };
+        console.log("Enviando:", data);
 
-                if (response.ok) {
-                    alert("¡Suscripción completada con éxito!");
-                    window.location.href = "thanks.html"; // Redirigir a la página de agradecimiento
-                    form.reset();
-                } else {
-                    alert("Hubo un problema con la suscripción.");
-                }
-                
-            } catch (error) {
-                console.error("Error al enviar la suscripción:", error);
+        try {
+            const res = await fetch("http://localhost:8080/subscribers/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            const mensaje = await res.text();
+            alert(mensaje);
+
+            if (res.ok) {
+                form.reset();
+                window.location.href = "thanks.html";
             }
-        });
-    } else {
-        console.log("Formulario de suscripción no encontrado en esta página.");
-    }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("No se pudo completar la suscripción.");
+        }
+    });
 });

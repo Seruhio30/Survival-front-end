@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 1. Cargar y mostrar suscriptores
     try {
-        const response = await fetch("http://localhost:8080/api/subscribers");
+        const response = await fetch("http://localhost:8080/subscribers");
         const subscribers = await response.json();
 
         subscribers.forEach(subscriber => {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (confirmDelete) {
                 try {
-                    const response = await fetch(`http://localhost:8080/api/subscribers/cancel?email=${email}`, {
+                    const response = await fetch(`http://localhost:8080/subscribers/cancel?email=${email}`, {
                         method: "DELETE",
                     });
 
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         
             if (newTopics) {
                 try {
-                    const response = await fetch(`http://localhost:8080/api/subscribers/${subscriberId}`, {
+                    const response = await fetch(`http://localhost:8080/subscribers/${subscriberId}`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ topicsOfInterest: newTopics }) // Solo los nuevos temas

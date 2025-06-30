@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (confirmDelete) {
             try {
-                const response = await fetch(`http://localhost:8080/api/subscribers/cancel?email=${email}`, {
+                const response = await fetch(`http://localhost:8080/subscribers/cancelar`, {
                     method: "DELETE",
                 });
 
