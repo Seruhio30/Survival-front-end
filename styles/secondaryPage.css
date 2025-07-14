@@ -74,12 +74,7 @@
     padding-top: 20px;
 }
 
-.video-container iframe {
-    width: 100%;
-    max-width: 560px;
-    /* height: auto; */
-    border-radius: 8px;
-}
+
 
 /* Nueva Sección: Enlaces a Instituciones de Emergencias */
 #institution-links {
