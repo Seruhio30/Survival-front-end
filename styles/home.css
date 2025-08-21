@@ -165,12 +165,16 @@
     max-width: 271px;
     height: 203px;
     border-radius: 8px;
-    
+    margin-top: 1rem;
 }
 
 #deslizamiento{
     max-height: 203px;
     width: auto;
+}
+
+.three-div p{
+    margin-top: 2rem;
 }
 
 .three-div a {
