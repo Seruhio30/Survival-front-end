@@ -185,13 +185,15 @@ Recommended order:
 
 1. ✅ Fix responsive issues.
 2. ✅ Fix emergency-card interaction.
-3. Improve accessibility and semantic HTML.
+3. ✅ Improve accessibility and semantic HTML.
 4. Verify educational content and sources.
 5. Improve media performance.
 6. Improve SEO.
 7. Perform controlled frontend cleanup.
 
 The emergency-question cards now use an accessible disclosure interaction based on semantic buttons and `aria-expanded`, with consistent behavior across mouse, touch and keyboard.
+
+The public frontend now also includes improved semantic heading hierarchy, Spanish language metadata, accessible navigation landmarks, hamburger-menu ARIA state management, descriptive image alternative text, a keyboard skip link, consistent `:focus-visible` styles, unique HTML IDs, descriptive download links and improved accessible naming for multimedia content.
 
 Future ideas such as weather APIs, alerts, subscriptions, email systems, exclusive content and the Join section should be addressed after the public MVP is stable.
 

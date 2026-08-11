@@ -27,14 +27,21 @@ function setupHamburgerMenu() {
 
     if (hamButton && navigation) {
         hamButton.addEventListener('click', () => {
-            navigation.classList.toggle('open');
-            hamButton.classList.toggle('open');
+            const isOpen = navigation.classList.toggle('open');
+            hamButton.classList.toggle('open', isOpen);
+            hamButton.setAttribute('aria-expanded', String(isOpen));
+            hamButton.setAttribute(
+                'aria-label',
+                isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'
+            );
         });
 
         document.addEventListener('click', (event) => {
             if (!navigation.contains(event.target) && !hamButton.contains(event.target)) {
                 navigation.classList.remove('open');
                 hamButton.classList.remove('open');
+                hamButton.setAttribute('aria-expanded', 'false');
+                hamButton.setAttribute('aria-label', 'Abrir menú de navegación');
             }
         });
     }
