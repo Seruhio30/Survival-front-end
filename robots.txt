@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seruhio30.github.io/Survival-front-end/sitemap.xml

@@ -119,6 +119,12 @@ The initial technical audit is available at:
 
     docs/project-audit.md
 
+
+The current public SEO foundation is documented at:
+
+```
+docs/seo.md
+```
 The audit includes findings related to:
 
 - frontend structure
