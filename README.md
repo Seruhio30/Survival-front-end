@@ -22,7 +22,7 @@ The immediate goal is to have a professional, stable and reliable public version
 
 Current priorities include:
 
-- responsive layout fixes
+- responsive layout stabilization (home completed for 375px, 768px and 1440px)
 - accessibility improvements
 - semantic HTML cleanup
 - content verification

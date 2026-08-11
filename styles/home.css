@@ -191,6 +191,36 @@
     background: #0056b3;
 }
 
+/* RESPONSIVE - Tablet y pantallas intermedias */
+@media (max-width: 859px) {
+    .one {
+        grid-template-columns: 1fr;
+    }
+
+    .one-left-column,
+    .one-right-column {
+        min-width: 0;
+    }
+
+    .one-right-colum-video,
+    #h2-container,
+    .iframe {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .iframe iframe {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        max-width: 100%;
+    }
+
+    .three {
+        grid-template-columns: 1fr;
+    }
+}
 /* RESPONSIVE - Una columna en pantallas pequeñas */
 @media (max-width: 600px) {
 
