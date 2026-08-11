@@ -17,10 +17,11 @@
     overflow: visible;
 }
 
-.one-left-column, .one-right-column {
+.one-left-column,
+.one-right-column {
     padding: 10px;
     box-sizing: border-box;
-    width: 100%; 
+    width: 100%;
     display: block;
 }
 
@@ -48,7 +49,8 @@
 }
 
 /* Ajustes a los textos */
-#ready-h3, #info1 {
+#ready-h3,
+#info1 {
     width: 100%;
     padding: 10px;
     word-wrap: break-word;
@@ -56,7 +58,8 @@
     text-align: left;
     margin: 0;
     box-sizing: border-box;
-    font-size: 1.1rem; /* Ajuste del tamaño para mayor legibilidad */
+    font-size: 1.1rem;
+    /* Ajuste del tamaño para mayor legibilidad */
 }
 
 /* Botón */
@@ -87,61 +90,70 @@
     background-color: #E6F2F8;
 }
 
-  
- 
+
+
 .card {
-    width: 200px;
-    height: 200px;
-    perspective: 1000px;
-}
-
-.card-inner {
-    position: relative;
     width: 100%;
-    height: 100%;
-    transition: transform 0.6s ease;
-    transform-style: preserve-3d;
-}
-
-.card:hover .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
+    max-width: 280px;
     border-radius: 10px;
-    padding: 20px;
-    font-weight: bold;
-    text-align: center;
+    overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-front {
+.card-toggle {
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
     background-color: #E0F7FA;
     color: #283593;
+    font: inherit;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card-toggle:hover {
+    background-color: #cceff4;
+}
+
+.card-toggle:focus-visible {
+    outline: 3px solid #283593;
+    outline-offset: -4px;
+}
+
+.card-toggle[aria-expanded="true"] {
+    border-radius: 10px 10px 0 0;
 }
 
 .card-back {
-    height: auto;
+    padding: 20px;
     background-color: #FA6B2A;
     color: #000000;
-    transform: rotateY(180deg);
+    font-weight: bold;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
 }
 
-#card-back-plan{
+.card-back[hidden] {
+    display: none;
+}
+
+.card-back a {
+    display: inline-block;
+    margin-top: 10px;
     color: #000000;
-} 
+}
+
+#card-back-plan {
+    color: #000000;
+}
 
 /* Sección Tres (Escenarios) */
 .three {
     display: grid;
-    grid-template-columns:  repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
 }
@@ -168,12 +180,12 @@
     margin-top: 1rem;
 }
 
-#deslizamiento{
+#deslizamiento {
     max-height: 203px;
     width: auto;
 }
 
-.three-div p{
+.three-div p {
     margin-top: 2rem;
 }
 
@@ -221,17 +233,19 @@
         grid-template-columns: 1fr;
     }
 }
+
 /* RESPONSIVE - Una columna en pantallas pequeñas */
 @media (max-width: 600px) {
 
     .one {
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         gap: 10px;
         padding: 15px;
     }
 
-    .one-left-column, .one-right-column {
+    .one-left-column,
+    .one-right-column {
         width: 100%;
         padding: 10px;
         box-sizing: border-box;
@@ -241,24 +255,26 @@
     .img-mochila img {
         width: 100%;
         height: auto;
-        max-width: 200px; 
+        max-width: 200px;
         margin: 0 auto;
     }
 
-    #ready-h3, #info1 {
-        font-size: 1.2rem; 
-        text-align: center; 
+    #ready-h3,
+    #info1 {
+        font-size: 1.2rem;
+        text-align: center;
         padding: 10px;
         margin: 0;
         max-width: 100%;
     }
+
     /* Flexbox para la sección 3 */
     .three {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        z-index: 1; /* Asegurar que esté encima */
+        z-index: 1;
+        /* Asegurar que esté encima */
         position: relative;
     }
 }
-

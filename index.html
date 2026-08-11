@@ -102,82 +102,75 @@
             </div>
         </section>
 
-        <section class="two">
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>¿Cómo preparar a mi familia ante un terremoto?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>
-                            La mejor manera es tener un plan de emergencia que incluya a todos los miembros del hogar.
-                            <br>
-                            <a href="pdf/PlanDeEmergenciaFamiliar.pdf" target="_blank">Descargar PDF</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <section class="two" aria-label="Preguntas frecuentes sobre preparación para emergencias">
+            <article class="card">
+                <button class="card-toggle" type="button" aria-expanded="false" aria-controls="emergency-card-1">
+                    ¿Cómo preparar a mi familia ante un terremoto?
+                </button>
 
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>¿Qué debe contener un kit de supervivencia de 72 horas?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>
-                            Haz clic aquí para ver la lista del kit de emergencia.
-                            <a href="secondaryPage.html#list" class="scroll-button">CLick Aqui</a>
-                            <br>
-                            <!-- <a href="pdf/mochilasp72.pdf" target="_blank">Descargar PDF para más información</a> -->
-                        </p>
-                    </div>
+                <div class="card-back" id="emergency-card-1" hidden>
+                    <p>
+                        La mejor manera es tener un plan de emergencia que incluya a todos los miembros del hogar.
+                        <br>
+                        <a href="pdf/PlanDeEmergenciaFamiliar.pdf" download>Descargar PDF</a>
+                    </p>
                 </div>
-            </div>
+            </article>
 
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>¿Cómo puedo crear un plan de evacuación efectivo para mi hogar?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>
-                            Sigue los pasos en el PDF descargable para crear un plan de evaciuación efectivo.<br>
-                            <a href="pdf/PlanDeEvacuacion.pdf" target="_blank"> Haz clic para ver el PDF
-                                descargable.</a>
-                        </p>
+            <article class="card">
+                <button class="card-toggle" type="button" aria-expanded="false" aria-controls="emergency-card-2">
+                    ¿Qué debe contener un kit de supervivencia de 72 horas?
+                </button>
 
-                    </div>
+                <div class="card-back" id="emergency-card-2" hidden>
+                    <p>
+                        Haz clic aquí para ver la lista del kit de emergencia.
+                        <br>
+                        <a href="secondaryPage.html#list" class="scroll-button">Ver lista del kit</a>
+                    </p>
                 </div>
-            </div>
+            </article>
 
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>¿Qué debo hacer en caso de una emergencia médica durante un desastre natural?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>
-                            Mantén la calma - Evalúa la situación - Pide ayuda - Proporciona primeros auxilios básicos -
-                            Sigue las instrucciones oficiales - Prepárate para evacuar
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <article class="card">
+                <button class="card-toggle" type="button" aria-expanded="false" aria-controls="emergency-card-3">
+                    ¿Cómo puedo crear un plan de evacuación efectivo para mi hogar?
+                </button>
 
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>¿Dónde puedo encontrar refugio y asistencia en mi área después de un desastre?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>
-                            Después de un desastre, puedes encontrar refugios y asistencia en tu área contactando a los
-                            servicios de emergencia locales.
-                            A menudo establecen refugios temporales y brindan servicios esenciales.
-                        </p>
-                    </div>
+                <div class="card-back" id="emergency-card-3" hidden>
+                    <p>
+                        Sigue los pasos en el PDF descargable para crear un plan de evacuación efectivo.
+                        <br>
+                        <a href="pdf/PlanDeEvacuacion.pdf" download>Descargar PDF</a>
+                    </p>
                 </div>
-            </div>
+            </article>
+
+            <article class="card">
+                <button class="card-toggle" type="button" aria-expanded="false" aria-controls="emergency-card-4">
+                    ¿Qué debo hacer en caso de una emergencia médica durante un desastre natural?
+                </button>
+
+                <div class="card-back" id="emergency-card-4" hidden>
+                    <p>
+                        Mantén la calma - Evalúa la situación - Pide ayuda - Proporciona primeros auxilios básicos -
+                        Sigue las instrucciones oficiales - Prepárate para evacuar.
+                    </p>
+                </div>
+            </article>
+
+            <article class="card">
+                <button class="card-toggle" type="button" aria-expanded="false" aria-controls="emergency-card-5">
+                    ¿Dónde puedo encontrar refugio y asistencia en mi área después de un desastre?
+                </button>
+
+                <div class="card-back" id="emergency-card-5" hidden>
+                    <p>
+                        Después de un desastre, puedes encontrar refugios y asistencia en tu área contactando a los
+                        servicios de emergencia locales. A menudo establecen refugios temporales y brindan servicios
+                        esenciales.
+                    </p>
+                </div>
+            </article>
         </section>
 
         <section class="three">
@@ -274,7 +267,7 @@
     </footer>
 
     <script src="scripts/common.js"></script>
-    <script src="scripts/homeCard.js"></script>
+
 
 </body>
 

@@ -41,9 +41,19 @@ function setupHamburgerMenu() {
 }
 
 function setupCardFlip() {
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', () => {
-            card.querySelector('.card-inner').classList.toggle('is-flipped');
+    document.querySelectorAll('.card-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const panelId = button.getAttribute('aria-controls');
+            const panel = document.getElementById(panelId);
+
+            if (!panel) {
+                return;
+            }
+
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+            button.setAttribute('aria-expanded', String(!isExpanded));
+            panel.hidden = isExpanded;
         });
     });
 }
