@@ -200,3 +200,20 @@ Future ideas such as weather APIs, alerts, subscriptions, email systems, exclusi
 ## License
 
 No license has been defined yet.
+
+## Educational content verification — August 2026
+
+The public emergency-preparedness content was reviewed against current official sources, prioritizing Costa Rican institutions.
+
+Main updates:
+
+- clarified the difference between a portable 72-hour emergency backpack and a household emergency reserve;
+- removed unsupported or misattributed disaster statistics;
+- replaced alarmist or unverifiable claims with practical preparedness guidance;
+- updated earthquake, flood, tropical cyclone and landslide recommendations;
+- clarified that immediate emergencies in Costa Rica should be reported through 9-1-1;
+- added official Costa Rican information sources including CNE, IMN, Cruz Roja, Bomberos, OVSICORI and RSN;
+- updated all seven downloadable educational PDFs with reviewed safety guidance, source attribution and an August 2026 verification date;
+- documented verification decisions and sources in `docs/content-sources.md`.
+
+The educational-content review intentionally did not include SEO, visual redesign, admin, backend, subscriptions, Join, weather APIs or real-time alerts.
