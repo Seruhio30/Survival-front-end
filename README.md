@@ -183,13 +183,15 @@ Before adding major features, the current public site should first be stabilized
 
 Recommended order:
 
-1. Fix responsive issues.
-2. Fix emergency-card interaction.
+1. ✅ Fix responsive issues.
+2. ✅ Fix emergency-card interaction.
 3. Improve accessibility and semantic HTML.
 4. Verify educational content and sources.
 5. Improve media performance.
 6. Improve SEO.
 7. Perform controlled frontend cleanup.
+
+The emergency-question cards now use an accessible disclosure interaction based on semantic buttons and `aria-expanded`, with consistent behavior across mouse, touch and keyboard.
 
 Future ideas such as weather APIs, alerts, subscriptions, email systems, exclusive content and the Join section should be addressed after the public MVP is stable.
 
