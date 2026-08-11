@@ -8,16 +8,35 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         subscribers.forEach(subscriber => {
             const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${subscriber.firstName} ${subscriber.lastName}</td>
-                <td>${subscriber.email}</td>
-                <td>${subscriber.topicsOfInterest}</td>
-                <td>${subscriber.subscriptionDate}</td>
-                <td>
-                    <button class="edit-btn" data-id="${subscriber.id}">Editar</button>
-                    <button class="delete-btn" data-email="${subscriber.email}">Eliminar</button>
-                </td>
-            `;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = `${subscriber.firstName ?? ""} ${subscriber.lastName ?? ""}`.trim();
+
+            const emailCell = document.createElement("td");
+            emailCell.textContent = subscriber.email ?? "";
+
+            const topicsCell = document.createElement("td");
+            topicsCell.textContent = subscriber.topicsOfInterest ?? "";
+
+            const dateCell = document.createElement("td");
+            dateCell.textContent = subscriber.subscriptionDate ?? "";
+
+            const actionsCell = document.createElement("td");
+
+            const editButton = document.createElement("button");
+            editButton.type = "button";
+            editButton.classList.add("edit-btn");
+            editButton.dataset.id = String(subscriber.id ?? "");
+            editButton.textContent = "Editar";
+
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.classList.add("delete-btn");
+            deleteButton.dataset.email = subscriber.email ?? "";
+            deleteButton.textContent = "Eliminar";
+
+            actionsCell.append(editButton, deleteButton);
+            row.append(nameCell, emailCell, topicsCell, dateCell, actionsCell);
             subscriberTableBody.appendChild(row);
         });
     } catch (error) {
@@ -54,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (event.target.classList.contains("edit-btn")) {
             const subscriberId = event.target.dataset.id;
             const newTopics = prompt("Ingrese los nuevos temas de interés separados por comas:");
-        
+
             if (newTopics) {
                 try {
                     const response = await fetch(`http://localhost:8080/subscribers/${subscriberId}`, {
@@ -62,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ topicsOfInterest: newTopics }) // Solo los nuevos temas
                     });
-        
+
                     if (response.ok) {
                         alert("Temas actualizados.");
                         location.reload(); // Recarga la tabla
@@ -74,8 +93,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
             }
         }
-        
-        
+
+
     });
 
     // 4. Configurar gráfico de suscriptores

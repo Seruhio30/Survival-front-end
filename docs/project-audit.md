@@ -1067,7 +1067,23 @@ Important concerns:
 
 Security must primarily be enforced on the future backend.
 
-Frontend controls alone must never be treated as authorization.
+### Admin security foundation follow-up
+
+The dormant administrative interface was reviewed separately after the initial audit.
+
+The following risk-reduction measures were applied:
+
+* `admin.html` was converted into a disabled informational page and no longer exposes subscriber-management controls.
+* `admin.html` no longer loads `scripts/admin.js`.
+* the broken reference to the nonexistent `scripts/updateSubscription.js` file was removed from the administrative page.
+* Chart.js is no longer loaded by `admin.html`; therefore its previous dependency-order concern is inactive while the panel remains disabled.
+* subscriber values in the dormant `scripts/admin.js` implementation are no longer rendered using `innerHTML`; safe DOM construction with `createElement`, `textContent`, `dataset`, and `append` is used instead.
+* the existing `http://localhost:8080` API references remain dormant and were not migrated or redesigned as part of this frontend security block.
+
+The administrative panel must remain disabled for the public MVP until server-side authentication and authorization exist. Hiding navigation links, frontend checks, or JavaScript-only login logic would not provide adequate protection.
+
+The backend implementation is not present in this repository, so administrative endpoints, authorization rules, API contracts, and production deployment configuration could not be validated here.
+
 
 ---
 

@@ -108,8 +108,15 @@ Related files include:
 This system currently depends on a local backend at:
 
     http://localhost:8080
-
 It is incomplete and must not be considered production-ready.
+
+As part of the admin security foundation work, the public administrative interface has been temporarily disabled. `admin.html` no longer loads administrative JavaScript, Chart.js, or the previously referenced missing `scripts/updateSubscription.js` file.
+
+The dormant `scripts/admin.js` file has also been hardened to avoid rendering backend-provided subscriber data through `innerHTML`. Safe DOM APIs such as `textContent`, `createElement`, `dataset`, and `append` are used instead.
+
+Reactivating the administration system requires real backend authentication and authorization, a validated production API configuration, and a separate review of the subscription API contracts. Frontend-only controls must not be treated as security.
+
+.
 
 The subscription/admin functionality will require a separate architecture and security review before being reactivated.
 
