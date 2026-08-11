@@ -186,14 +186,18 @@ Recommended order:
 1. ✅ Fix responsive issues.
 2. ✅ Fix emergency-card interaction.
 3. ✅ Improve accessibility and semantic HTML.
-4. Verify educational content and sources.
-5. Improve media performance.
+4. ✅ Verify educational content and sources.
+5. ✅ Improve media performance.
 6. Improve SEO.
 7. Perform controlled frontend cleanup.
 
 The emergency-question cards now use an accessible disclosure interaction based on semantic buttons and `aria-expanded`, with consistent behavior across mouse, touch and keyboard.
 
 The public frontend now also includes improved semantic heading hierarchy, Spanish language metadata, accessible navigation landmarks, hamburger-menu ARIA state management, descriptive image alternative text, a keyboard skip link, consistent `:focus-visible` styles, unique HTML IDs, descriptive download links and improved accessible naming for multimedia content.
+
+Media performance optimization now includes lazy loading for the embedded YouTube iframe, metadata-only preload behavior for local videos, intrinsic dimensions for key images, prioritized loading for the featured emergency-backpack image, asynchronous decoding for secondary disaster images and optimization of the flood image from approximately **352 KB / 2048×1317** to **64 KB / 600×386**.
+
+The two local H.264/AAC videos were analyzed and compression alternatives were tested without replacing the originals. The production files remain approximately **3.7 MB** and **12 MB** to avoid unverified quality regressions. Their delivery now uses `preload="metadata"`.
 
 Future ideas such as weather APIs, alerts, subscriptions, email systems, exclusive content and the Join section should be addressed after the public MVP is stable.
 

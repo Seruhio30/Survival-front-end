@@ -390,14 +390,23 @@ They represent one of the largest performance risks for mobile users and slower 
 
 The videos visually scale correctly on `secondaryPage.html`, but the delivery strategy should be reconsidered.
 
-Possible future options include:
+Possible future options identified during the audit included:
 
 - YouTube hosting
 - stronger video compression
 - optimized preload behavior
 - poster-first lazy loading
 
-No implementation decision was made during the audit.
+### Follow-up — media optimization
+
+The media-performance block later implemented the safest delivery improvement without changing the public experience:
+
+- both local videos now use `preload="metadata"`
+- both original H.264/AAC video files were retained
+- no video was deleted or replaced with YouTube
+- test encodes confirmed that stronger compression could reduce the files substantially, but they were not adopted because visual quality was not formally validated
+
+Test-only CRF 26 encodes reduced the approximate sizes from **3.7 MB to 2.3 MB** and **12 MB to 6.8 MB** while retaining 720p/30 fps H.264/AAC. These files were not committed and remain only a documented future option.
 
 ---
 
@@ -970,7 +979,7 @@ Preferred future sources should prioritize official institutions and recognized 
 
 # 12. Performance Assessment
 
-Main identified performance risks:
+Main performance risks identified during the audit were:
 
 1. local 12 MB family-plan video
 2. local 3.7 MB backpack video
@@ -979,15 +988,19 @@ Main identified performance risks:
 5. Google Analytics
 6. relatively large flood image compared with other images
 
-Approximate flood image size:
+### Media optimization follow-up
 
-`352 KB`
+The flood image was optimized from approximately **352 KB / 2048×1317** to **64 KB / 600×386**, an approximate **82% size reduction**, while preserving WebP and the existing visual presentation.
 
-Other major public images are significantly smaller.
+Loading behavior was also improved:
 
-The site does use lazy loading on several disaster images, which is positive.
+- disaster images retain `loading="lazy"` and now use `decoding="async"`
+- the featured emergency-backpack image is no longer lazy-loaded and uses `fetchpriority="high"`
+- key images include intrinsic dimensions where safe
+- the YouTube iframe uses `loading="lazy"`
+- local videos use `preload="metadata"`
 
-Performance optimization should focus first on media rather than premature JavaScript micro-optimization.
+All local multimedia references were verified after the changes. The original local video files remain intentionally unchanged.
 
 ---
 
@@ -1152,12 +1165,17 @@ Focus on:
 
 ## Phase 3 — Performance
 
-Focus on:
+Completed in the media-optimization block:
 
-- local video strategy
-- image optimization
-- loading behavior
-- external resource impact
+- ✅ local video delivery strategy reviewed
+- ✅ image optimization
+- ✅ media loading behavior
+- ✅ embedded YouTube loading improvement
+
+Still available for future investigation:
+
+- stronger local video compression after formal quality validation
+- broader external-resource impact such as Google Fonts and Analytics
 
 ---
 
