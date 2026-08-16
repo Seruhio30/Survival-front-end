@@ -1,0 +1,276 @@
+.manage-main {
+    padding: 2rem 1rem 3rem;
+    background-color: #e6f2f8;
+}
+
+.manage-section {
+    width: min(100%, 720px);
+    margin: 0 auto;
+}
+
+.manage-intro {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.manage-eyebrow {
+    margin-bottom: 0.5rem;
+    color: #fa6b2a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+}
+
+.manage-intro h1 {
+    margin-bottom: 0.75rem;
+    color: #283593;
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    line-height: 1.1;
+}
+
+.manage-description,
+.manage-required-note {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manage-description {
+    color: #333;
+}
+
+.manage-required-note {
+    margin-top: 0.75rem;
+    color: #5a5a5a;
+    font-size: 0.9rem;
+}
+
+.manage-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+#manage-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-field label,
+.preferences-fieldset legend {
+    color: #222;
+    font-weight: 700;
+}
+
+.optional-label {
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem;
+    border: 1px solid #b8b8b8;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #222;
+    font: inherit;
+}
+
+.form-field input:hover,
+.form-field select:hover {
+    border-color: #7c7c7c;
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.preference-option:focus-within,
+.manage-submit:focus-visible {
+    outline: 3px solid rgba(250, 107, 42, 0.35);
+    outline-offset: 2px;
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible {
+    border-color: #fa6b2a;
+}
+
+.field-hint {
+    color: #5d5d5d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.field-error {
+    min-height: 1.25rem;
+    color: #a12622;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-field input[aria-invalid="true"],
+.form-field select[aria-invalid="true"] {
+    border-color: #a12622;
+}
+
+.preferences-fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.preferences-fieldset legend {
+    margin-bottom: 0.35rem;
+    font-size: 1rem;
+}
+
+.preferences-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+}
+
+.preference-option {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.75rem;
+    min-width: 0;
+    padding: 0.9rem;
+    border: 1px solid #d2d2d2;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.preference-option:hover {
+    border-color: #283593;
+    background-color: #f7f8ff;
+}
+
+.preference-option input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.15rem;
+    accent-color: #283593;
+    cursor: pointer;
+}
+
+.preference-option span {
+    min-width: 0;
+}
+
+.preference-option strong,
+.preference-option small {
+    display: block;
+}
+
+.preference-option strong {
+    color: #222;
+}
+
+.preference-option small {
+    margin-top: 0.2rem;
+    color: #5d5d5d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.management-status,
+.form-feedback {
+    display: none;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.management-status.is-visible,
+.form-feedback.is-visible {
+    display: block;
+}
+
+.management-status.is-loading {
+    border: 1px solid #aab2d8;
+    background-color: #f4f5ff;
+    color: #283593;
+}
+
+.management-status.is-error,
+.form-feedback.is-error {
+    border: 1px solid #c9837f;
+    background-color: #fff1f0;
+    color: #7b211d;
+}
+
+.form-feedback.is-success {
+    border: 1px solid #6b9f70;
+    background-color: #edf7ee;
+    color: #24552a;
+}
+
+.manage-submit {
+    width: 100%;
+    min-height: 50px;
+    border: 0;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    background-color: #283593;
+    color: #fff;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.manage-submit:hover:not(:disabled) {
+    background-color: #1f2a78;
+}
+
+.manage-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.manage-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+    .manage-main {
+        padding: 3rem 1.5rem 4rem;
+    }
+
+    .manage-card {
+        padding: 2rem;
+    }
+
+    .preferences-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .manage-submit {
+        transition: none;
+    }
+}
+
+#manage-form[hidden] {
+    display: none;
+}
