@@ -147,6 +147,41 @@ API configuration is isolated in:
 
 Local development uses `http://localhost:8080`. The production API URL remains intentionally unset until the backend has a confirmed production HTTPS URL.
 
+## Subscription Management Frontend
+
+The subscription management frontend is available at:
+
+    manage/
+
+The route is compatible with backend-generated links using:
+
+    /manage#token=<management-token>
+
+The management token is read only from `window.location.hash`, kept only in memory, and removed from the browser address bar with `history.replaceState()` after capture. It is not stored in `localStorage` or `sessionStorage`, and it is never sent as a query parameter.
+
+The page uses:
+
+    GET /api/subscriptions/manage
+    PATCH /api/subscriptions/manage
+
+Both requests authenticate with:
+
+    Authorization: Bearer <management-token>
+
+The editable fields are limited to:
+
+- `firstName`
+- `countryCode`
+- `preferences`
+
+The frontend requires at least one preference, validates `firstName` up to 80 characters, and requires a two-letter country code.
+
+Invalid, revoked, missing, or unavailable management access is handled with the same neutral message without exposing the reason.
+
+The management frontend reuses `scripts/config.js` and does not duplicate API base URLs.
+
+End-to-end validation confirmed successful GET loading, PATCH persistence, invalid-token handling, and revoked-token handling against the real backend. The backend CORS configuration was also updated separately to allow `PATCH` requests from the approved local frontend origin.
+
 ## Dormant / Incomplete Functionality
 
 The repository still contains parts of the older subscription and administration implementation.
