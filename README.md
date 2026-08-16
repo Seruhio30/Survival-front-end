@@ -128,10 +128,10 @@ Public fields:
 
 Current preference mapping:
 
-- Preparación general → `GENERAL_PREPAREDNESS`
-- Mochila y kit de emergencia → `EMERGENCY_KIT`
-- Contenido educativo → `EDUCATIONAL_CONTENT`
-- Eventos y capacitaciones → `EVENTS_AND_TRAINING`
+- Preparación del hogar y la familia → `GENERAL_PREPAREDNESS`
+- Mochila y suministros de emergencia → `EMERGENCY_KIT`
+- Emergencias y habilidades prácticas → `PRACTICAL_SKILLS`
+- Charlas y novedades de Survival72 → `EVENTS_AND_UPDATES`
 
 The frontend treats every successful `200 REQUEST_ACCEPTED` response identically and does not expose whether the request represents a new subscription, an active duplicate, or a rejoin.
 
