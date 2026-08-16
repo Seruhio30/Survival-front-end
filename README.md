@@ -242,11 +242,9 @@ As part of the admin security foundation work, the public administrative interfa
 
 The dormant `scripts/admin.js` file has also been hardened to avoid rendering backend-provided subscriber data through `innerHTML`. Safe DOM APIs such as `textContent`, `createElement`, `dataset`, and `append` are used instead.
 
-Reactivating the administration system requires real backend authentication and authorization, a validated production API configuration, and a separate review of the subscription API contracts. Frontend-only controls must not be treated as security.
+The historical root-level Admin (`admin.html` and `scripts/admin.js`) remains legacy and is not the functional basis of the current administration system. Frontend-only controls must never be treated as security.
 
-.
-
-The subscription/admin functionality will require a separate architecture and security review before being reactivated.
+The canonical Admin now uses the secured backend contracts under `/api/admin/**`, Spring Security HTTP sessions, cookies with credentials, and CSRF protection. Production API configuration and deployment remain pending.
 
 ## Documentation
 
@@ -341,6 +339,29 @@ Media performance optimization now includes lazy loading for the embedded YouTub
 The two local H.264/AAC videos were analyzed and compression alternatives were tested without replacing the originals. The production files remain approximately **3.7 MB** and **12 MB** to avoid unverified quality regressions. Their delivery now uses `preload="metadata"`.
 
 Future ideas such as weather APIs, alerts, subscriptions, email systems, exclusive content and the Join section should be addressed after the public MVP is stable.
+
+## Admin Content frontend — August 2026
+
+The canonical Content Admin frontend is available at `admin/index.html`.
+
+Current MVP capabilities:
+
+- Admin login, session recovery and logout through the canonical `/api/admin/auth/**` endpoints;
+- CSRF token and header obtained from the session endpoint and kept only in JavaScript memory;
+- authenticated Content listing with type/status filters and simple previous/next pagination;
+- creation of `ARTICLE` content;
+- creation of `VIDEO` content using a supported YouTube URL or video ID;
+- editing through the canonical `PATCH /api/admin/content/{id}` contract;
+- `DRAFT`, `PUBLISHED` and `ARCHIVED` status management;
+- optional targeting through the four canonical subscriber preferences;
+- accessible inline feedback without `alert()`;
+- responsive layout validated at 375×812, 768×1024 and 1440×900.
+
+The new implementation uses `scripts/config.js` as the API base URL source and does not reuse the legacy `scripts/admin.js` logic. Credentials, CSRF tokens and session identifiers are not stored in localStorage or sessionStorage.
+
+A real local end-to-end validation was performed against the Spring Boot backend and MySQL, covering invalid and valid login, Content listing, ARTICLE creation, VIDEO creation from a `youtu.be` URL, editing, publishing, archiving, logout and expired-session recovery.
+
+Newsletter, dashboard, subscriber editing, legacy cleanup and production deployment remain outside this frontend block.
 
 ## License
 
