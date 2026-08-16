@@ -1,0 +1,166 @@
+.unsubscribe-main {
+    padding: 2rem 1rem 3rem;
+    background-color: #e6f2f8;
+}
+
+.unsubscribe-section {
+    width: min(100%, 720px);
+    margin: 0 auto;
+}
+
+.unsubscribe-intro {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.unsubscribe-eyebrow {
+    margin-bottom: 0.5rem;
+    color: #fa6b2a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+}
+
+.unsubscribe-intro h1 {
+    margin-bottom: 0.75rem;
+    color: #283593;
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    line-height: 1.1;
+}
+
+.unsubscribe-description {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #333;
+}
+
+.unsubscribe-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+#unsubscribe-action {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.unsubscribe-warning {
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.unsubscribe-status {
+    display: none;
+    margin-bottom: 1.25rem;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.unsubscribe-status.is-visible {
+    display: block;
+}
+
+.unsubscribe-status.is-success {
+    border: 1px solid #6b9f70;
+    background-color: #edf7ee;
+    color: #24552a;
+}
+
+.unsubscribe-status.is-error {
+    border: 1px solid #c9837f;
+    background-color: #fff1f0;
+    color: #7b211d;
+}
+
+.unsubscribe-submit {
+    width: 100%;
+    min-height: 50px;
+    border: 0;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    background-color: #a12622;
+    color: #fff;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.unsubscribe-submit:hover:not(:disabled) {
+    background-color: #7b211d;
+}
+
+.unsubscribe-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.unsubscribe-submit:focus-visible {
+    outline: 3px solid rgba(250, 107, 42, 0.35);
+    outline-offset: 2px;
+}
+
+.unsubscribe-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+    .unsubscribe-main {
+        padding: 3rem 1.5rem 4rem;
+    }
+
+    .unsubscribe-card {
+        padding: 2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .unsubscribe-submit {
+        transition: none;
+    }
+}
+
+#unsubscribe-action[hidden] {
+    display: none;
+}
+
+/* Prevent narrow viewports from overflowing. */
+.unsubscribe-section,
+.unsubscribe-card,
+#unsubscribe-action {
+    min-width: 0;
+}
+
+.unsubscribe-description,
+.unsubscribe-warning,
+.unsubscribe-status,
+.unsubscribe-submit {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.unsubscribe-submit {
+    white-space: normal;
+}
+
+@media (max-width: 480px) {
+    .unsubscribe-main {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .unsubscribe-card {
+        padding: 1rem;
+    }
+}
