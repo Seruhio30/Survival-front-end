@@ -68,33 +68,94 @@ A typical local URL is:
 
     http://127.0.0.1:5502/index.html
 
+### Join local integration
+
+The new Join frontend is available at:
+
+    form.html
+
+For frontend-only development, the normal local port can still be used.
+
+For end-to-end Join testing against the current backend CORS configuration, serve the frontend from:
+
+    http://localhost:5500
+
+Example:
+
+    python3 -m http.server 5500
+
+Then open:
+
+    http://localhost:5500/form.html
+
+The current backend development CORS configuration allows `localhost:5500` and `127.0.0.1:5500`. This is a backend environment constraint, not a requirement of the Join JavaScript itself.
+
 ## Current Public Frontend
 
 The active public frontend mainly consists of:
 
     index.html
     secondaryPage.html
+    form.html
 
     scripts/
       common.js
+      config.js
       homeCard.js
+      join.js
 
     styles/
       commun.css
+      form.css
       home.css
       secondaryPage.css
 
     img/
     pdf/
 
+### Join frontend
+
+The Join form sends the canonical payload to:
+
+    POST /api/join
+
+Public fields:
+
+- `email` — required, maximum 254 characters
+- `firstName` — optional, maximum 80 characters
+- `countryCode` — required ISO 3166-1 alpha-2 code
+- `preferences` — one or more canonical preference values
+
+Current preference mapping:
+
+- Preparación general → `GENERAL_PREPAREDNESS`
+- Mochila y kit de emergencia → `EMERGENCY_KIT`
+- Contenido educativo → `EDUCATIONAL_CONTENT`
+- Eventos y capacitaciones → `EVENTS_AND_TRAINING`
+
+The frontend treats every successful `200 REQUEST_ACCEPTED` response identically and does not expose whether the request represents a new subscription, an active duplicate, or a rejoin.
+
+Success feedback is displayed inline:
+
+    Solicitud recibida. Revisa tu correo para continuar.
+
+The form does not use `alert()`, does not store subscription data in `localStorage`, and does not log the email or full payload.
+
+API configuration is isolated in:
+
+    scripts/config.js
+
+Local development uses `http://localhost:8080`. The production API URL remains intentionally unset until the backend has a confirmed production HTTPS URL.
+
 ## Dormant / Incomplete Functionality
 
-The repository also contains an older subscription and administration implementation.
+The repository still contains parts of the older subscription and administration implementation.
 
-Related files include:
+The legacy Join page has now been replaced by the canonical `form.html` + `scripts/join.js` implementation.
+
+Remaining legacy/incomplete files include:
 
     admin.html
-    form.html
     thanks.html
     unsubscribe.html
     update.html
@@ -104,6 +165,8 @@ Related files include:
       form.js
       unsubscribe.js
       updateSubscription-v2.js
+
+`scripts/form.js` is retained only as legacy code and is not loaded by the new Join flow.
 
 This system currently depends on a local backend at:
 
