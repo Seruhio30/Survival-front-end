@@ -182,6 +182,36 @@ The management frontend reuses `scripts/config.js` and does not duplicate API ba
 
 End-to-end validation confirmed successful GET loading, PATCH persistence, invalid-token handling, and revoked-token handling against the real backend. The backend CORS configuration was also updated separately to allow `PATCH` requests from the approved local frontend origin.
 
+## Subscription Unsubscribe Frontend
+
+The canonical unsubscribe frontend is available at:
+
+    unsubscribe/
+
+The route is compatible with backend-generated links using:
+
+    /unsubscribe#token=<management-token>
+
+The management token is read only from `window.location.hash`, kept only in memory, and removed from the browser address bar with `history.replaceState()` after capture. It is not stored in `localStorage` or `sessionStorage`, and it is never sent as a query parameter.
+
+Opening the page does not cancel the subscription. Cancellation only occurs after an explicit user action.
+
+The page uses:
+
+    POST /api/subscriptions/unsubscribe
+
+The request authenticates with:
+
+    Authorization: Bearer <management-token>
+
+The frontend blocks duplicate submissions, displays a `Cancelando...` state while the request is in progress, handles successful cancellation inline, and treats invalid, revoked, missing, or unavailable subscription access with the same neutral message.
+
+Network or temporary backend failures keep the action available so the user can retry.
+
+The frontend reuses `scripts/config.js` and does not duplicate API base URLs.
+
+JavaScript syntax validation, Git diff validation, and mobile visual validation were completed successfully. A complete local end-to-end success test remains pending because obtaining a raw management token without changing backend architecture, manipulating persisted test data, or configuring email was intentionally kept outside this block.
+
 ## Dormant / Incomplete Functionality
 
 The repository still contains parts of the older subscription and administration implementation.

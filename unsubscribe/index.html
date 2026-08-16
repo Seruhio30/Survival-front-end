@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Cancela tu suscripción a Survival72 de forma segura."
+    >
+    <meta name="author" content="Sergio Herrera Rivera">
+
+    <title>Cancelar suscripción | Survival72</title>
+
+    <link rel="stylesheet" href="../styles/commun.css">
+    <link rel="stylesheet" href="../styles/unsubscribe.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <header>
+        <div class="nav-container">
+            <div class="page-name-container">
+                <p id="page-name">Survival72</p>
+            </div>
+
+            <button
+                id="hamburger"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="nav-menu"
+            ></button>
+
+            <nav id="nav-menu" aria-label="Navegación principal">
+                <ul>
+                    <li>
+                        <a href="../index.html" id="home">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="../secondaryPage.html" id="how-to">Guías y Consejos</a>
+                    </li>
+                    <li>
+                        <a href="../form.html" id="subscribe">Únete</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="logo-section-container">
+            <div class="logo-container">
+                <img
+                    src="../img/sitePlan-img/logo-survival72.jpeg"
+                    alt="Logo de Survival72"
+                    id="logo"
+                    width="200"
+                    height="200"
+                >
+            </div>
+
+            <div class="web-info">
+                <p class="web-info-texto">
+                    Gestiona de forma segura la cancelación de tu suscripción.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="unsubscribe-main">
+        <section
+            class="unsubscribe-section"
+            aria-labelledby="unsubscribe-title"
+        >
+            <div class="unsubscribe-intro">
+                <p class="unsubscribe-eyebrow">Tu suscripción</p>
+
+                <h1 id="unsubscribe-title">Cancelar suscripción</h1>
+
+                <p class="unsubscribe-description">
+                    Puedes dejar de recibir comunicaciones de Survival72
+                    cancelando tu suscripción.
+                </p>
+            </div>
+
+            <div class="unsubscribe-card">
+                <div
+                    id="unsubscribe-status"
+                    class="unsubscribe-status"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                    tabindex="-1"
+                ></div>
+
+                <div id="unsubscribe-action">
+                    <p class="unsubscribe-warning">
+                        Esta acción cancelará tu suscripción. La cancelación
+                        solo se realizará cuando pulses el botón.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="unsubscribe-submit"
+                        class="unsubscribe-submit"
+                    >
+                        <span class="submit-label">
+                            Cancelar mi suscripción
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="pf">
+            &copy; <span id="currentyear"></span> SeruhioCode30. Costa Rica
+        </p>
+        <p class="pf">
+            Última modificación: <span id="lastModified"></span>
+        </p>
+    </footer>
+
+    <script src="../scripts/common.js"></script>
+    <script src="../scripts/config.js"></script>
+    <script src="../scripts/unsubscribe-subscription.js"></script>
+</body>
+
+</html>
