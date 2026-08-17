@@ -13,12 +13,17 @@
         hasNext: false,
         editingId: null,
         submittingLogin: false,
-        submittingContent: false
+        submittingContent: false,
+        activeSection: "content"
     };
 
     const elements = {
         loginView: document.getElementById("login-view"),
         contentView: document.getElementById("content-view"),
+        newsletterView: document.getElementById("newsletter-view"),
+        adminNavigation: document.getElementById("admin-navigation"),
+        showContentButton: document.getElementById("show-content-button"),
+        showNewslettersButton: document.getElementById("show-newsletters-button"),
         loginForm: document.getElementById("login-form"),
         username: document.getElementById("username"),
         password: document.getElementById("password"),
@@ -87,11 +92,44 @@
         state.authenticated = authenticated;
 
         elements.loginView.hidden = authenticated;
-        elements.contentView.hidden = !authenticated;
+        elements.adminNavigation.hidden = !authenticated;
         elements.logoutButton.hidden = !authenticated;
+
+        if (authenticated) {
+            showAdminSection(state.activeSection);
+        } else {
+            elements.contentView.hidden = true;
+            elements.newsletterView.hidden = true;
+        }
 
         if (!authenticated) {
             elements.sessionUser.textContent = "";
+        }
+    }
+
+    function showAdminSection(section) {
+        const showNewsletter = section === "newsletter";
+
+        state.activeSection = showNewsletter ? "newsletter" : "content";
+
+        elements.contentView.hidden = showNewsletter;
+        elements.newsletterView.hidden = !showNewsletter;
+
+        elements.showContentButton.setAttribute(
+            "aria-current",
+            showNewsletter ? "false" : "page"
+        );
+        elements.showNewslettersButton.setAttribute(
+            "aria-current",
+            showNewsletter ? "page" : "false"
+        );
+
+        if (
+            showNewsletter &&
+            state.authenticated &&
+            window.Survival72AdminNewsletter?.loadNewsletters
+        ) {
+            window.Survival72AdminNewsletter.loadNewsletters();
         }
     }
 
@@ -109,8 +147,13 @@
         state.totalPages = 0;
         state.hasNext = false;
         state.editingId = null;
+        state.activeSection = "content";
 
         setAuthenticatedView(false);
+
+        if (window.Survival72AdminNewsletter?.reset) {
+            window.Survival72AdminNewsletter.reset();
+        }
         resetContentForm();
     }
 
@@ -753,6 +796,14 @@
         elements.loginForm.addEventListener("submit", handleLogin);
         elements.logoutButton.addEventListener("click", handleLogout);
 
+        elements.showContentButton.addEventListener("click", () => {
+            showAdminSection("content");
+        });
+
+        elements.showNewslettersButton.addEventListener("click", () => {
+            showAdminSection("newsletter");
+        });
+
         elements.contentType.addEventListener(
             "change",
             updateYouTubeField
@@ -811,6 +862,16 @@
             loadContent();
         });
     }
+
+    window.Survival72Admin = {
+        apiFetch,
+        buildHeaders,
+        readResponseBody,
+        handleProtectedResponse,
+        isAuthenticated() {
+            return state.authenticated;
+        }
+    };
 
     async function initialize() {
         bindEvents();

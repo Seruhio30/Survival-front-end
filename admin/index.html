@@ -7,11 +7,11 @@
 
     <meta
         name="description"
-        content="Administración de contenido de Survival72."
+        content="Administración de contenido y newsletters de Survival72."
     >
     <meta name="author" content="Sergio Herrera Rivera">
 
-    <title>Administración de contenido | Survival72</title>
+    <title>Administración | Survival72</title>
 
     <link rel="stylesheet" href="../styles/commun.css">
     <link rel="stylesheet" href="../styles/admin-content.css">
@@ -24,8 +24,32 @@
         <div class="admin-header-inner">
             <div>
                 <p class="admin-brand">Survival72</p>
-                <p class="admin-area-label">Administración de contenido</p>
+                <p class="admin-area-label">Administración</p>
             </div>
+
+            <nav
+                id="admin-navigation"
+                class="admin-navigation"
+                aria-label="Secciones de administración"
+                hidden
+            >
+                <button
+                    id="show-content-button"
+                    class="admin-nav-button"
+                    type="button"
+                    aria-current="page"
+                >
+                    Contenido
+                </button>
+
+                <button
+                    id="show-newsletters-button"
+                    class="admin-nav-button"
+                    type="button"
+                >
+                    Newsletters
+                </button>
+            </nav>
 
             <button
                 id="logout-button"
@@ -49,7 +73,7 @@
                 <h1 id="login-title">Administración Survival72</h1>
 
                 <p class="admin-intro">
-                    Inicia sesión para gestionar el contenido publicado en Survival72.
+                    Inicia sesión para gestionar el contenido y las newsletters de Survival72.
                 </p>
 
                 <form id="login-form" class="admin-form" novalidate>
@@ -371,10 +395,351 @@
                 </section>
             </div>
         </section>
+
+        <section
+            id="newsletter-view"
+            class="admin-content-section"
+            aria-labelledby="newsletter-title"
+            hidden
+        >
+            <div class="admin-page-heading">
+                <div>
+                    <p class="admin-eyebrow">Newsletter Admin</p>
+                    <h1 id="newsletter-title">Newsletters</h1>
+                    <p class="admin-session-user">
+                        Envía contenido cuando realmente haya algo útil que compartir.
+                    </p>
+                </div>
+
+                <button
+                    id="new-newsletter-button"
+                    class="admin-button admin-button-primary"
+                    type="button"
+                >
+                    Nueva newsletter
+                </button>
+            </div>
+
+            <div
+                id="newsletter-global-feedback"
+                class="admin-feedback"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+            <div class="admin-layout">
+                <section
+                    class="admin-card admin-list-panel"
+                    aria-labelledby="newsletter-list-title"
+                >
+                    <div class="admin-panel-heading">
+                        <h2 id="newsletter-list-title">Newsletters existentes</h2>
+
+                        <button
+                            id="refresh-newsletters-button"
+                            class="admin-button admin-button-secondary"
+                            type="button"
+                        >
+                            Actualizar
+                        </button>
+                    </div>
+
+                    <form
+                        id="newsletter-filters"
+                        class="admin-filters"
+                        aria-label="Filtros de newsletters"
+                    >
+                        <div class="admin-field">
+                            <label for="newsletter-filter-status">Estado</label>
+                            <select
+                                id="newsletter-filter-status"
+                                name="status"
+                            >
+                                <option value="">Todos</option>
+                                <option value="DRAFT">Borrador</option>
+                                <option value="READY_TO_SEND">Lista para enviar</option>
+                                <option value="SENT">Enviada</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div
+                        id="newsletter-list"
+                        class="admin-content-list"
+                        aria-live="polite"
+                    ></div>
+
+                    <div
+                        id="empty-newsletter-message"
+                        class="admin-empty-state"
+                        hidden
+                    >
+                        No hay newsletters para mostrar.
+                    </div>
+
+                    <nav
+                        class="admin-pagination"
+                        aria-label="Paginación de newsletters"
+                    >
+                        <button
+                            id="newsletter-previous-page-button"
+                            class="admin-button admin-button-secondary"
+                            type="button"
+                        >
+                            Anterior
+                        </button>
+
+                        <p id="newsletter-page-summary">Página 1</p>
+
+                        <button
+                            id="newsletter-next-page-button"
+                            class="admin-button admin-button-secondary"
+                            type="button"
+                        >
+                            Siguiente
+                        </button>
+                    </nav>
+                </section>
+
+                <div class="admin-side-stack">
+                    <section
+                        id="newsletter-editor-panel"
+                        class="admin-card admin-editor-panel"
+                        aria-labelledby="newsletter-editor-title"
+                    >
+                        <div class="admin-panel-heading">
+                            <div>
+                                <p class="admin-eyebrow">Editor</p>
+                                <h2 id="newsletter-editor-title">
+                                    Nueva newsletter
+                                </h2>
+                            </div>
+
+                            <button
+                                id="cancel-newsletter-edit-button"
+                                class="admin-button admin-button-secondary"
+                                type="button"
+                                hidden
+                            >
+                                Cancelar edición
+                            </button>
+                        </div>
+
+                        <form
+                            id="newsletter-form"
+                            class="admin-form"
+                            novalidate
+                        >
+                            <input id="newsletter-id" type="hidden">
+
+                            <div class="admin-field">
+                                <label for="newsletter-subject">
+                                    Asunto
+                                    <span aria-hidden="true">*</span>
+                                </label>
+
+                                <input
+                                    id="newsletter-subject"
+                                    name="subject"
+                                    type="text"
+                                    maxlength="200"
+                                    required
+                                >
+                            </div>
+
+                            <div class="admin-field">
+                                <label for="newsletter-body">
+                                    Contenido
+                                    <span aria-hidden="true">*</span>
+                                </label>
+
+                                <textarea
+                                    id="newsletter-body"
+                                    name="body"
+                                    rows="10"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <fieldset class="admin-preferences">
+                                <legend>
+                                    Preferencias
+                                    <span aria-hidden="true">*</span>
+                                </legend>
+
+                                <p class="admin-field-hint">
+                                    Selecciona al menos una audiencia.
+                                </p>
+
+                                <div
+                                    id="newsletter-preference-list"
+                                    class="admin-preference-list"
+                                >
+                                    <label class="admin-preference-option">
+                                        <input
+                                            type="checkbox"
+                                            name="newsletter-preferences"
+                                            value="GENERAL_PREPAREDNESS"
+                                        >
+                                        <span>Preparación del hogar y la familia</span>
+                                    </label>
+
+                                    <label class="admin-preference-option">
+                                        <input
+                                            type="checkbox"
+                                            name="newsletter-preferences"
+                                            value="EMERGENCY_KIT"
+                                        >
+                                        <span>Mochila y suministros de emergencia</span>
+                                    </label>
+
+                                    <label class="admin-preference-option">
+                                        <input
+                                            type="checkbox"
+                                            name="newsletter-preferences"
+                                            value="PRACTICAL_SKILLS"
+                                        >
+                                        <span>Emergencias y habilidades prácticas</span>
+                                    </label>
+
+                                    <label class="admin-preference-option">
+                                        <input
+                                            type="checkbox"
+                                            name="newsletter-preferences"
+                                            value="EVENTS_AND_UPDATES"
+                                        >
+                                        <span>Charlas y novedades de Survival72</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <button
+                                id="newsletter-submit"
+                                class="admin-button admin-button-primary"
+                                type="submit"
+                            >
+                                Crear newsletter
+                            </button>
+
+                            <div
+                                id="newsletter-form-feedback"
+                                class="admin-feedback"
+                                role="status"
+                                aria-live="polite"
+                            ></div>
+                        </form>
+
+                        <button
+                            id="show-newsletter-ready-button"
+                            class="admin-button admin-button-secondary admin-ready-action"
+                            type="button"
+                            hidden
+                        >
+                            Marcar lista para enviar
+                        </button>
+
+                        <section
+                            id="newsletter-ready-confirmation"
+                            class="admin-action-confirmation"
+                            aria-labelledby="newsletter-ready-title"
+                            hidden
+                        >
+                            <h3 id="newsletter-ready-title">
+                                ¿Marcar lista para enviar?
+                            </h3>
+
+                            <p>
+                                Esto prepara la newsletter para un futuro envío,
+                                pero no enviará ningún correo.
+                            </p>
+
+                            <div class="admin-content-actions">
+                                <button
+                                    id="confirm-newsletter-ready-button"
+                                    class="admin-button admin-button-primary"
+                                    type="button"
+                                >
+                                    Sí, marcar lista
+                                </button>
+
+                                <button
+                                    id="cancel-newsletter-ready-button"
+                                    class="admin-button admin-button-secondary"
+                                    type="button"
+                                >
+                                    Cancelar
+                                </button>
+                            </div>
+                        </section>
+                    </section>
+
+                    <section
+                        id="newsletter-audience-panel"
+                        class="admin-card"
+                        aria-labelledby="newsletter-audience-title"
+                        hidden
+                    >
+                        <div class="admin-panel-heading">
+                            <div>
+                                <p class="admin-eyebrow">Previsualización</p>
+                                <h2 id="newsletter-audience-title">
+                                    Audiencia
+                                </h2>
+                            </div>
+                        </div>
+
+                        <p
+                            id="newsletter-audience-summary"
+                            class="admin-audience-summary"
+                        ></p>
+
+                        <div
+                            id="newsletter-audience-feedback"
+                            class="admin-feedback"
+                            role="status"
+                            aria-live="polite"
+                        ></div>
+
+                        <div
+                            id="newsletter-audience-list"
+                            class="admin-audience-list"
+                        ></div>
+
+                        <nav
+                            id="newsletter-audience-pagination"
+                            class="admin-pagination"
+                            aria-label="Paginación de audiencia"
+                            hidden
+                        >
+                            <button
+                                id="newsletter-audience-previous-button"
+                                class="admin-button admin-button-secondary"
+                                type="button"
+                            >
+                                Anterior
+                            </button>
+
+                            <p id="newsletter-audience-page-summary">
+                                Página 1
+                            </p>
+
+                            <button
+                                id="newsletter-audience-next-button"
+                                class="admin-button admin-button-secondary"
+                                type="button"
+                            >
+                                Siguiente
+                            </button>
+                        </nav>
+                    </section>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="../scripts/config.js"></script>
     <script src="../scripts/admin-content.js"></script>
+    <script src="../scripts/admin-newsletter.js"></script>
 </body>
 
 </html>
