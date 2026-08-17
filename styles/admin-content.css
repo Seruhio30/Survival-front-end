@@ -451,3 +451,96 @@ body {
         scroll-behavior: auto !important;
     }
 }
+
+.admin-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-nav-button {
+    min-height: 44px;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.admin-nav-button:hover,
+.admin-nav-button[aria-current="page"] {
+    background-color: #fff;
+    color: var(--admin-primary);
+}
+
+.admin-nav-button:focus-visible {
+    outline: 3px solid rgba(250, 107, 42, 0.55);
+    outline-offset: 2px;
+}
+
+.admin-side-stack {
+    min-width: 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.admin-action-confirmation {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    background-color: #f8f9ff;
+}
+
+.admin-action-confirmation h3 {
+    margin-top: 0;
+    color: var(--admin-primary);
+}
+
+.admin-audience-summary {
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.admin-audience-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.admin-audience-member {
+    min-width: 0;
+    padding: 0.9rem;
+    border: 1px solid var(--admin-border);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.admin-audience-member p {
+    margin: 0.25rem 0;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+    .admin-header-inner {
+        flex-wrap: wrap;
+    }
+
+    .admin-navigation {
+        width: 100%;
+        order: 3;
+    }
+
+    .admin-nav-button {
+        flex: 1 1 140px;
+    }
+}
+
+.admin-ready-action {
+    width: 100%;
+    margin-top: 1.25rem;
+}

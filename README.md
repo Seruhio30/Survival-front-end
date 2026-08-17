@@ -340,9 +340,9 @@ The two local H.264/AAC videos were analyzed and compression alternatives were t
 
 Future ideas such as weather APIs, alerts, subscriptions, email systems, exclusive content and the Join section should be addressed after the public MVP is stable.
 
-## Admin Content frontend — August 2026
+## Admin Content and Newsletter frontend — August 2026
 
-The canonical Content Admin frontend is available at `admin/index.html`.
+The canonical Admin frontend is available at `admin/index.html` and provides simple authenticated navigation between Content and Newsletters.
 
 Current MVP capabilities:
 
@@ -351,17 +351,23 @@ Current MVP capabilities:
 - authenticated Content listing with type/status filters and simple previous/next pagination;
 - creation of `ARTICLE` content;
 - creation of `VIDEO` content using a supported YouTube URL or video ID;
-- editing through the canonical `PATCH /api/admin/content/{id}` contract;
-- `DRAFT`, `PUBLISHED` and `ARCHIVED` status management;
-- optional targeting through the four canonical subscriber preferences;
-- accessible inline feedback without `alert()`;
-- responsive layout validated at 375×812, 768×1024 and 1440×900.
+- Content editing through the canonical `PATCH /api/admin/content/{id}` contract;
+- Content `DRAFT`, `PUBLISHED` and `ARCHIVED` status management;
+- authenticated Newsletter listing with optional status filtering and simple previous/next pagination;
+- Newsletter creation and editing with subject, plain-text body and at least one canonical subscriber preference;
+- audience preview through `GET /api/admin/newsletters/{id}/audience-preview`, including estimated audience and paginated member preview;
+- explicit `READY_TO_SEND` workflow through `POST /api/admin/newsletters/{id}/ready`, with an inline confirmation step and no email delivery;
+- editing a `READY_TO_SEND` newsletter returns it to `DRAFT`, matching the backend lifecycle contract;
+- `SENT` newsletters are displayed as read-only;
+- unsaved Newsletter edits hide the READY action until changes are saved, preventing stale persisted content from being marked ready;
+- accessible inline feedback without `alert()` or `window.confirm()`;
+- responsive Admin layout validated at 375×812, 768×1024 and 1440×900.
 
-The new implementation uses `scripts/config.js` as the API base URL source and does not reuse the legacy `scripts/admin.js` logic. Credentials, CSRF tokens and session identifiers are not stored in localStorage or sessionStorage.
+The implementation uses `scripts/config.js` as the API base URL source and does not reuse the legacy `scripts/admin.js` logic. Admin authentication, session and CSRF behavior remain owned by `scripts/admin-content.js`, while Newsletter-specific behavior is implemented in `scripts/admin-newsletter.js`. Credentials, CSRF tokens and session identifiers are not stored in localStorage or sessionStorage.
 
-A real local end-to-end validation was performed against the Spring Boot backend and MySQL, covering invalid and valid login, Content listing, ARTICLE creation, VIDEO creation from a `youtu.be` URL, editing, publishing, archiving, logout and expired-session recovery.
+Real local end-to-end validation was performed against the Spring Boot backend and MySQL. Content validation covered login, listing, ARTICLE/VIDEO creation, editing, publishing, archiving, logout and expired-session recovery. Newsletter validation covered login, Newsletter navigation and listing, DRAFT creation, preference selection, editing, audience preview, `READY_TO_SEND`, editing READY back to `DRAFT`, persistence of edited content and logout.
 
-Newsletter, dashboard, subscriber editing, legacy cleanup and production deployment remain outside this frontend block.
+No Newsletter email sending exists in this frontend block. Dashboard, subscriber editing, legacy cleanup and production deployment remain outside scope.
 
 ## License
 
