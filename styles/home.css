@@ -36,7 +36,8 @@
 
 .img-mochila img {
     width: 100%;
-    max-width: 100%;
+    max-width: 512px;
+    height: auto;
     border-radius: 8px;
     display: block;
     margin: 0 auto;
