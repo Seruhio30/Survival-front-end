@@ -279,3 +279,24 @@
         position: relative;
     }
 }
+.hero-video {
+    width: 100%;
+    max-width: 100%;
+}
+
+.hero-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.hero-video-credit {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.hero-video-credit a {
+    overflow-wrap: anywhere;
+}
